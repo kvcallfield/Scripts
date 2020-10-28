@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Run this as root user
+# Run this as root user 
 
 users=( $(dscl . list /Users | grep -v '_' | grep -v nobody | grep -v daemon | grep -v root 2>&1) )
 
