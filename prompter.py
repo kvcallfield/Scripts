@@ -5,7 +5,8 @@
 #
 # Note that the icon that you want to appear in the prompt will need to be uploaded to the target as /tmp/logo.png first
 
-import pwd, urllib2, urllib, sys, os, random, ssl, time, commands, AppKit, glob, platform, getpass, Foundation, SystemConfiguration, LaunchServices, PyObjCTools
+# Had to remove LaunchServices as that is no longer in BigSur
+import pwd, urllib2, urllib, sys, os, random, ssl, time, commands, AppKit, glob, platform, getpass, Foundation, SystemConfiguration, PyObjCTools
 from AppKit import *
 from glob import glob
 from Foundation import *
